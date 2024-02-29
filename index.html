@@ -41,10 +41,10 @@
     </footer>
     <!-- Register the service worker -->
     <script>
-        function navigateTo(sectionId) {
-          let content;
-          if (sectionId === "home") {
-            content = `
+      function navigateTo(sectionId) {
+        let content;
+        if (sectionId === "home") {
+          content = `
               <section id="home">
                 <h2>Technical Skills</h2>
                 <h3>Front End:</h3>
@@ -87,8 +87,8 @@
                 </ul>
               </section>
             `;
-          } else if (sectionId === "about") {
-            content = `
+        } else if (sectionId === "about") {
+          content = `
               <section id="about">
                 <h2>About Me</h2>
                 <p>
@@ -98,8 +98,8 @@
                 </p>
               </section>
             `;
-          } else if (sectionId === "contact") {
-            content = `
+        } else if (sectionId === "contact") {
+          content = `
               <section id="contact" style="display: flex; justify-content: center; align-items: center;">
                 <div style="text-align: center;">
                   <h2>Contact Me</h2>
@@ -111,21 +111,27 @@
                 </div>
               </section>
             `;
-          } else {
-            // For other sections, you can navigate as usual
-            console.log("Navigation to:", sectionId);
-            // Example: Display a message for other sections
-            content = `<p>Content for ${sectionId} section will be added here.</p>`;
-          }
-          document.getElementById("main-content").innerHTML = content;
+        } else {
+          // For other sections, you can navigate as usual
+          console.log("Navigation to:", sectionId);
+          // Example: Display a message for other sections
+          content = `<p>Content for ${sectionId} section will be added here.</p>`;
         }
+        document.getElementById("main-content").innerHTML = content;
+      }
+
+      window.onload = (event) => {
+  navigateTo("home");
+};
       
-        if ("serviceWorker" in navigator) {
-          window.addEventListener("load", function () {
-            navigator.serviceWorker.register("/sw.js");
-          });
-        }
-      </script>
-      
+      // Register the service worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
   </body>
 </html>
+
+
